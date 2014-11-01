@@ -1,0 +1,33 @@
+{
+  "name": "technion_moodle_connector",
+  "title": "Technion Moodle Connector",
+  "id": "technionmoodleconnector",
+  "description": "A simple Firefox addon to automate the login process to the Technion's Moodle website",
+  "author": "Daniel Mittelman",
+  "license": "GPL 3.0",
+  "version": "1.0",
+  "icon": "data/icon48.png",
+  "icon64": "data/icon64.png",
+  "preferences": [
+    {
+        "title": "Enabled",
+        "name": "enabled",
+        "type": "boolint",
+        "on": "On",
+        "off": "Off",
+        "value": 0
+    },
+    {
+        "title": "Moodle username",
+        "name": "username",
+        "type": "string",
+        "value": ""
+    },
+    {
+        "title": "Moodle password",
+        "name": "password",
+        "type": "string",
+        "value": ""
+    }
+  ]
+}
