@@ -13,8 +13,8 @@
         "title": "Enabled",
         "name": "enabled",
         "type": "boolint",
-        "on": "On",
-        "off": "Off",
+        "on": "1",
+        "off": "0",
         "value": 0
     },
     {

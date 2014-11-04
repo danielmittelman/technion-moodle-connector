@@ -1,61 +1,7 @@
-var { ToggleButton } = require('sdk/ui/button/toggle');
 var tabs = require("sdk/tabs");
 var data = require("sdk/self").data;
-var panels = require("sdk/panel");
 var pageMod = require("sdk/page-mod");
 var self = require("sdk/self");
-
-/************ User interface ************/
-
-// Menu toggle button constructor
-var button = ToggleButton({
-  id: "panel-menu",
-  label: "Technion Moodle Connector",
-  icon: {
-    "16": "./icon-16.png",
-    "32": "./icon-32.png",
-    "64": "./icon-64.png"
-  },
-  onChange: toggleMenu
-});
-
-// Menu panel constructor
-var panel = panels.Panel({
-    width: 320,
-    height: 233,
-    contentURL: data.url("panel.html"),
-    contentScriptFile: data.url("panel-scripts.js"),
-    onShow: function() { // When shown, send the preferences to the panel
-        panel.port.emit("panelLoad", require('sdk/simple-prefs').prefs);
-    },
-    onHide: function() {
-        handleHide(panel);
-    }
-});
-
-// Handles clicks on the menu toggle button
-function toggleMenu(state) {
-    if(state.checked) {
-        panel.show({
-            position: button
-        });
-    }
-}
-
-// Unchecks the button and persists the settings
-function handleHide(panel) {
-    panel.port.emit("panelGetSettings");
-    panel.port.on("panelGetSettingsResult", function(result) {
-    
-        // Retrieves the settings from the panel and saves them
-        var prefs = require('sdk/simple-prefs').prefs;
-        prefs.enabled = result.enabled ? 1 : 0;
-        prefs.username = result.username;
-        prefs.password = result.password;
-    });
-
-    button.state('window', {checked: false});
-}
 
 
 /************ Logic ************/
