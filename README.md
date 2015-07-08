@@ -1,7 +1,7 @@
 technion-moodle-connector
 =========================
 
-Technion Moodle Connector is a simple extension that enables the automation of the login process to moodle.technion.ac.il from any Firefox browser. It was built by Daniel Mittelman, a student at the CS faculty in the Technion, using Mozilla's new Addon SDK (a.k.a Jetpack), and hence built using only HTML, JavaScript and CSS3.
+Technion Moodle Connector is a simple extension that enables the automation of the login process to moodle.technion.ac.il from any Firefox browser. It was built by Daniel Mittelman, a student at the CS faculty in the Technion, using Mozilla's new Addon SDK (a.k.a Jetpack), hence built using only HTML, JavaScript and CSS3.
 
 
 Usage
