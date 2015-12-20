@@ -4,7 +4,7 @@
 	"name": "Technion Moodle Connector",
 	"author": "Daniel Mittelman",
 	"description": "A simple Firefox addon to automate the login process to the Technion's Moodle website",
-	"version": "1.2.1",
+	"version": "1.2.2",
 	"icons": {
 		"32": "res/icon32.png",
 		"48": "res/icon48.png",
