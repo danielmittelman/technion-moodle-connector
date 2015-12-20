@@ -16,6 +16,9 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 		// If the user just logged out, it's best to wait a little before logging back in
 		setTimeout(loginToMoodle, 300);
 	}
+	if(message["type"] == "skip_download_page") {
+		chrome.tabs.update(sender.tab.id, {url: sender.tab.url + "&redirect=1"});
+	}
 });
 
 function sendToActiveTab(message) {

@@ -26,7 +26,8 @@
 			"matches": ["http://moodle.technion.ac.il/*", "https://moodle.technion.ac.il/*"],
 			"js": ["res/js/init_message.js",
 				   "res/js/get-login-state.js",
-				   "res/js/connecting-overlay.js"
+				   "res/js/connecting-overlay.js",
+				   "res/js/skip_file_pages.js"
 				  ],
 			"run_at": "document_end"
 		}
