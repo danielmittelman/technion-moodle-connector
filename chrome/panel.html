@@ -14,7 +14,7 @@
         <header class="panel-heading font-bold">
             Settings
         </header>
-        <div class="panel-body" style="height: 220px;">
+        <div class="panel-body" style="height: 310px;">
             <form class="form-horizontal" method="get">
                 <div class="checkbox i-checks">
                     <label>
@@ -43,11 +43,20 @@
                 <div class="form-group">
                     <button id="save" class="btn btn-primary pull-right" style="width: 100px;">Save</button>
                 </div>
-            </form>
-            
 
+                <div class="line line-dashed b-b line-lg"></div>
+
+                <div class="form-group">
+                    <label>Download all files from the current page</label>
+                    <div class="col-xs-8" style="padding: 0px;">
+                        <input id="download_pattern" type="text" placeholder="Pattern (*.pdf, )" class="form-control">
+                    </div>
+                    <div class="col-xs-4" style="padding: 0px;">
+                        <button id="download_button" class="btn btn-danger pull-right">Download</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        
     </section>
 </div>
 
