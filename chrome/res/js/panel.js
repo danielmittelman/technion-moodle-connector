@@ -26,6 +26,11 @@ function respondToEnter(e) {
         saveAndClose();
 }
 
+function startDownload() {
+    var pattern = document.getElementById("download_pattern").value;
+    chrome.runtime.sendMessage({"type": "downloadAllLinks", "pattern": pattern});
+}
+
 // Load settings when the DOM has loaded
 document.addEventListener('DOMContentLoaded', function() {
     loadSettings();
@@ -35,3 +40,8 @@ document.addEventListener('DOMContentLoaded', function() {
 document.getElementById("save").addEventListener("click", saveAndClose);
 document.getElementById("username").addEventListener("keydown", respondToEnter);
 document.getElementById("password").addEventListener("keydown", respondToEnter);
+
+document.getElementById("download_button").addEventListener("click", startDownload);
+
+//- Ask Cristina where she applies the Smearing filter in Mathematia
+//- Create a more complex Smearing filter

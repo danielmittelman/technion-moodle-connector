@@ -19,6 +19,13 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 	if(message["type"] == "skip_download_page") {
 		chrome.tabs.update(sender.tab.id, {url: sender.tab.url + "&redirect=1"});
 	}
+	if(message["type"] == "downloadAllLinks") {
+		downloadAllFiles(message["pattern"]);
+	}
+	if(message["type"] == "foundLink") {
+		console.log("Found link: " + message["link"]);
+		chrome.downloads.download({url: message["link"], saveAs: false});
+	}
 });
 
 function sendToActiveTab(message) {
@@ -30,6 +37,13 @@ function sendToActiveTab(message) {
 function reloadActiveTab() {
 	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 		chrome.tabs.reload(tabs[0].id);
+	});
+}
+
+function downloadAllFiles(pattern) {
+	console.log("Download all files that match the pattern " + pattern);
+	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+		chrome.tabs.sendMessage(tabs[0].id, {"type": "getMatchingLinks", "pattern": pattern});
 	});
 }
 

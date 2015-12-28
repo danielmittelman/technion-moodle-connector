@@ -27,7 +27,8 @@
 			"js": ["res/js/init_message.js",
 				   "res/js/get-login-state.js",
 				   "res/js/connecting-overlay.js",
-				   "res/js/skip_file_pages.js"
+				   "res/js/skip_file_pages.js",
+				   "res/js/extract_links.js"
 				  ],
 			"run_at": "document_end"
 		}
@@ -39,6 +40,7 @@
 
 	"permissions": [
 		"tabs",
+		"downloads",
 		"*://moodle.technion.ac.il/*"
 	]
 }
