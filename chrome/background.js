@@ -6,6 +6,9 @@ Since the login credentials to the Moodle are static, and sometimes transferred 
 it seemed like an overkill to store them in an encrypted storage location.
 **/
 
+var total_pot_links = 0;
+var matched_links = 0;
+
 // Global message listener
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 	console.log("Got message: type is " + message["type"]);
@@ -22,11 +25,22 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
 	if(message["type"] == "downloadAllLinks") {
 		downloadAllFiles(message["pattern"]);
 	}
+	if(message["type"] == "potLinks") {
+		total_pot_links = message["value"];
+	}
+	if(message["type"] == "checkingLink") {
+		updateDownloadBar(total_pot_links, matched_links);
+	}
 	if(message["type"] == "foundLink") {
 		console.log("Found link: " + message["link"]);
+		updateDownloadBar(total_pot_links, ++matched_links);
 		chrome.downloads.download({url: message["link"], saveAs: false});
 	}
 });
+
+function updateDownloadBar(total, matched) {
+	sendToActiveTab({"type": "updateDownloadBar", "value": [total, matched]});
+}
 
 function sendToActiveTab(message) {
 	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {

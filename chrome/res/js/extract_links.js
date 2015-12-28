@@ -33,6 +33,7 @@ function resolveSingleLink(link, collected_links) {
 		if(xhr.readyState == 4 && xhr.status == 200) {
 			// Parse the response HTML page and extract the explicit link
 			var responseLinks = xhr.responseXML.getElementsByTagName("a");
+			notifyPluginOnCheckingLink();
 			for(var i = 0 ; i < responseLinks.length ; i++) {
 				if(EXPLICIT_LINK_REGEX.test(responseLinks[i].href)) {
 					collected_links.push(responseLinks[i].href);
@@ -48,6 +49,10 @@ function resolveSingleLink(link, collected_links) {
 
 function notifyPluginOnLink(link) {
 	chrome.runtime.sendMessage({"type": "foundLink", "link": link});
+}
+
+function notifyPluginOnCheckingLink(link) {
+	chrome.runtime.sendMessage({"type": "checkingLink"});
 }
 
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
